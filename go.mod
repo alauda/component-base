@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/davecgh/go-spew v1.1.1
+	github.com/gsamokovarov/assert v0.0.0-20180414063448-8cd8ab63a335
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45 // indirect
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4 // indirect
 	k8s.io/apiextensions-apiserver v0.0.0-20190624090600-dfe76d39a269

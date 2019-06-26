@@ -8,3 +8,6 @@ lint:
 	golangci-lint run -c .golangci.yml
 	revive -exclude pkg/apis/... -exclude pkg/client/... -config .revive.toml -formatter friendly ./pkg/...
 
+
+test:
+	go test  -v  ./hash/...
