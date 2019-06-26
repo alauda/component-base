@@ -1,6 +1,5 @@
 mod:
 	GO111MODULE=on go mod tidy
-	GO111MODULE=on go mod vendor
 
 fmt:
 	find . -name \*.go  | xargs goimports -w
