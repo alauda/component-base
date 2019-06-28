@@ -23,8 +23,6 @@ func DeepHashObject(hasher hash.Hash, objectToWrite interface{}) {
 	printer.Fprintf(hasher, "%#v", objectToWrite)
 }
 
-
-
 func genHash(data interface{}) uint64 {
 	hasher := fnv.New64()
 	DeepHashObject(hasher, data)

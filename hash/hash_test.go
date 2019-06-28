@@ -21,4 +21,3 @@ func TestHash(t *testing.T) {
 	}
 	assert.Equal(t, "13162844096571394621", GenHashStr(data))
 }
-
