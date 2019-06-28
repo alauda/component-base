@@ -1,6 +1,7 @@
 package regex
 
 import (
+	"errors"
 	"fmt"
 	"regexp"
 )
@@ -18,9 +19,9 @@ func IsValidResourceName(name string) bool {
 
 // DefaultResourceNameRegexError create kubernetes like error message in kubectl about invalid HelmRequest
 // resource
-func DefaultResourceNameRegexError(kind, name, key, value string) string {
+func DefaultResourceNameRegexError(kind, name, key, value string) error {
 	template := `The %s "%s" is invalid: %s: Invalid value: "%s": ` +
 		`a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', ` +
 		`and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '%s')`
-	return fmt.Sprintf(template, kind, name, key, value, DefaultResourceNameRegex)
+	return errors.New(fmt.Sprintf(template, kind, name, key, value, DefaultResourceNameRegex))
 }

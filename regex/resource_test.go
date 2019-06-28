@@ -13,7 +13,7 @@ func TestCreateResourceRegexError(t *testing.T) {
 		"ff--",
 		"metadata.name",
 		"ff--",
-	))
+	).Error())
 }
 
 func TestIsValidResourceName(t *testing.T) {
