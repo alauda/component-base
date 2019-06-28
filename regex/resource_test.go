@@ -7,9 +7,8 @@ import (
 )
 
 func TestCreateResourceRegexError(t *testing.T) {
-	exp := `The ConfigMap "ff--" is invalid: metadata.name: Invalid value: "ff--": a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')`
-	assert.Equal(t, exp, CreateResourceRegexError(
-		`[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*`,
+	exp := `The ConfigMap "ff--" is invalid: metadata.name: Invalid value: "ff--": a DNS-1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$')`
+	assert.Equal(t, exp, DefaultResourceNameRegexError(
 		"ConfigMap",
 		"ff--",
 		"metadata.name",
