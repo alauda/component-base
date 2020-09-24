@@ -27,9 +27,9 @@ func ensureCRDCreated(client apiextensionsclient.Interface, crd *extensionsobj.C
 	presetCRD, err := crdClient.Get(crd.Name, metav1.GetOptions{})
 	if err == nil {
 		if reflect.DeepEqual(presetCRD.Spec, crd.Spec) {
-			klog.V(1).Infof("crd %s already exists", crd.Name)
+			klog.Infof("crd %s already exists", crd.Name)
 		} else {
-			klog.V(3).Infof("Update crd %s: %+v -> %+v", crd.Name, presetCRD.Spec, crd.Spec)
+			klog.Infof("Update crd %s: %+v -> %+v", crd.Name, presetCRD.Spec, crd.Spec)
 			newCRD := crd
 			newCRD.ResourceVersion = presetCRD.ResourceVersion
 			// Update crd
@@ -37,7 +37,7 @@ func ensureCRDCreated(client apiextensionsclient.Interface, crd *extensionsobj.C
 				klog.Errorf("Error update crd %s: %v", crd.Name, err)
 				return false, nil
 			}
-			klog.V(1).Infof("Update crd %s successfully.", crd.Name)
+			klog.Infof("Update crd %s successfully.", crd.Name)
 		}
 	} else {
 		// If not exist, create a new one
@@ -48,7 +48,7 @@ func ensureCRDCreated(client apiextensionsclient.Interface, crd *extensionsobj.C
 			klog.Errorf("Error creating crd %s: %v", crd.Name, err)
 			return false, nil
 		}
-		klog.V(1).Infof("Create crd %s successfully.", crd.Name)
+		klog.Infof("Create crd %s successfully.", crd.Name)
 	}
 
 	return true, nil
